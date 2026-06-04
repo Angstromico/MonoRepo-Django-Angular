@@ -1,0 +1,57 @@
+🎯 Simplified Master Prompt — Full-Stack Django & Angular "HR Project"
+
+🎯 Create a complete Full-Stack project called "hr_fullstack" that implements an Employee Management system. It must include a Django REST Framework backend (with PostgreSQL in Docker) and an Angular frontend. Explain everything step-by-step in a pedagogical order, providing complete files ready to copy and paste.
+
+🔧 General Requirements
+
+Backend: Django REST Framework (DRF)
+- Port: 8080 → http://localhost:8080/api/employees
+- Database: PostgreSQL (running in Docker)
+- Table: employee (id, name, department, salary)
+- Features: CRUD, CORS support (django-cors-headers) for http://localhost:4200.
+
+Frontend: Angular (Latest Version)
+- Port: 4200 → http://localhost:4200
+- Features: Standalone components, Service for API calls, CRUD UI (List, Create, Edit, Delete).
+- Styling: Basic CSS/Bootstrap for a clean look.
+
+🧩 Pedagogical Flow
+
+Phase 1: Infrastructure & Backend Setup
+1. Docker configuration: Create a `docker-compose.yml` to run a PostgreSQL container.
+2. Environment preparation (Dependencies: django, djangorestframework, django-cors-headers, psycopg2-binary).
+3. Project and App creation (hr_fullstack and employees).
+4. Configuration of settings.py (PostgreSQL connection, DRF, and CORS).
+5. Model definition (models.py).
+6. Serializer creation (serializers.py).
+7. View implementation (views.py using generics).
+8. URL routing (urls.py).
+9. Database migrations.
+10. Server execution on port 8080.
+
+Phase 2: Frontend Setup (Angular)
+1. Workspace initialization (ng new hr-frontend).
+2. Interface/Model definition for Employee.
+3. Service creation for API communication (HttpClient).
+4. Component development (EmployeeList, EmployeeForm).
+5. Routing configuration.
+6. Main layout integration.
+
+Phase 3: Integration & Testing
+1. Verifying CORS connectivity.
+2. End-to-end testing of CRUD operations.
+3. Final project structure overview.
+
+🧾 File Format in the Guide
+- Include the FULL PATH of each file.
+- Indicate if the file is NEW or EXISTING.
+- Highlight IMPORTANT CHANGES (e.g., "Added PostgreSQL connection", "Configured Docker", "Configured CORS").
+
+🧠 Writing Instructions
+- The output must be a comprehensive guide, not just a list of steps.
+- Briefly explain each command before showing it.
+- Show COMPLETE files (no snippets).
+- Maintain logical order (Infrastructure/Backend first, then Frontend).
+
+💡 Final Goal
+The result must be a fully functional Full-Stack HR system, with a robust REST API and a responsive Angular interface, ready to be deployed locally.
