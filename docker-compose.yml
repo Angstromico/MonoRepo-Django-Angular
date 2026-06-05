@@ -10,9 +10,31 @@ services:
       POSTGRES_USER: hr_user
       POSTGRES_PASSWORD: hr_password
     ports:
-      - "5432:5432"
+      - "5438:5438"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    container_name: hr_backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8090:8090"
+    environment:
+      - DATABASE_URL=postgres://hr_user:hr_password@db:5432/hr_db
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: hr_frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
 
 volumes:
   postgres_data:

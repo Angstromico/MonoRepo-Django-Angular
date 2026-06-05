@@ -1,59 +1,43 @@
 # Full-Stack Django & Angular HR Management Project
 
-This project implements an Employee Management system with a Django REST Framework backend, an Angular frontend, and a PostgreSQL database.
-
-## Project Structure
-- `backend/`: Django REST Framework project.
-- `frontend/`: Angular standalone application.
-- `docker-compose.yml`: Infrastructure for the PostgreSQL database.
+This project implements an Employee Management system with a Django REST Framework backend, an Angular frontend, and a PostgreSQL database, all orchestrated via Docker.
 
 ## Prerequisites
-- Python 3.10+
-- Node.js & npm (Latest LTS)
 - Docker & Docker Compose
 
 ---
 
-## Getting Started
+## Quick Start (Single Command)
 
-### 1. Start the Database
-The project uses PostgreSQL running in a Docker container.
+You can start the entire project (Database, Backend, and Frontend) with one command:
+
 ```bash
-# From the project root
-docker-compose up -d
+docker-compose up --build
 ```
-*The database will be available on `localhost:5432` with credentials defined in `docker-compose.yml`.*
 
-### 2. Start the Backend (Django)
-1.  **Activate the Virtual Environment**:
-    ```bash
-    # Windows
-    .\venv\Scripts\activate
-    # macOS/Linux
-    source venv/bin/activate
-    ```
-2.  **Run Migrations**:
-    ```bash
-    cd backend
-    python manage.py migrate
-    ```
-3.  **Start the Server**:
-    ```bash
-    python manage.py runserver 8080
-    ```
-*The API will be available at `http://localhost:8080/api/employees`.*
+- **Backend API**: `http://localhost:8080/api/employees`
+- **Frontend UI**: `http://localhost:4200`
 
-### 3. Start the Frontend (Angular)
-1.  **Install Dependencies** (First time only):
-    ```bash
-    cd frontend
-    npm install
-    ```
-2.  **Start the Development Server**:
-    ```bash
-    npm start
-    ```
-*The application will be available at `http://localhost:4200`.*
+---
+
+## Development Manual Setup
+
+If you prefer to run services individually for development:
+
+### 1. Database
+```bash
+docker-compose up -d db
+```
+
+### 2. Backend (Django)
+1.  **Activate Venv**: `.\venv\Scripts\activate`
+2.  **Migrate**: `cd backend && python manage.py migrate`
+3.  **Run**: `python manage.py runserver 8080`
+*(Note: Change `HOST` in `settings.py` to `localhost` for this mode)*
+
+### 3. Frontend (Angular)
+1.  **Install**: `cd frontend && npm install`
+2.  **Run**: `npm start`
 
 ---
 

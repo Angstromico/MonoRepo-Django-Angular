@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'hr_db',
         'USER': 'hr_user',
         'PASSWORD': 'hr_password',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
