@@ -1,34 +1,65 @@
 # Full-Stack Django & Angular HR Management Project
 
-This project provides a comprehensive prompt designed to generate a complete Full-Stack application for Human Resources management. It leverages **Django REST Framework** for the backend and **Angular** for the frontend.
+This project implements an Employee Management system with a Django REST Framework backend, an Angular frontend, and a PostgreSQL database.
 
-## Project Overview
-
-The generated application consists of:
-- **Backend**: A robust REST API built with Django, using **PostgreSQL** as the primary database running inside a **Docker** container. It includes CORS configuration to allow seamless communication with the frontend.
-- **Frontend**: A modern, responsive web interface built with Angular (using standalone components) that allows users to perform CRUD (Create, Read, Update, Delete) operations on employee records.
-
-## Key Features
-- **Employee CRUD**: Manage employee data including name, department, and salary.
-- **Containerized Database**: Uses Docker Compose to easily spin up a PostgreSQL instance.
-- **CORS Support**: Pre-configured to handle cross-origin requests between the Angular dev server (port 4200) and the Django server (port 8080).
-- **Pedagogical Approach**: The prompt generates a guide that explains every step, making it ideal for learning or rapid prototyping.
-
-## How to Use the Prompt
-1. Copy the content of `prompt_django_rest.txt`.
-2. Paste it into your preferred LLM (like Gemini, ChatGPT, or Claude).
-3. Follow the generated step-by-step guide to build your application.
+## Project Structure
+- `backend/`: Django REST Framework project.
+- `frontend/`: Angular standalone application.
+- `docker-compose.yml`: Infrastructure for the PostgreSQL database.
 
 ## Prerequisites
-- **Python 3.x**
-- **Node.js & Angular CLI**
-- **Docker & Docker Compose**
-- **Postman** (for API testing)
+- Python 3.10+
+- Node.js & npm (Latest LTS)
+- Docker & Docker Compose
 
-## Infrastructure (Docker)
-The prompt includes the creation of a `docker-compose.yml` file to run PostgreSQL:
-- **Image**: `postgres:latest`
-- **Database Name**: `hr_db`
-- **User**: `postgres`
-- **Password**: `postgres`
-- **Port**: `5432`
+---
+
+## Getting Started
+
+### 1. Start the Database
+The project uses PostgreSQL running in a Docker container.
+```bash
+# From the project root
+docker-compose up -d
+```
+*The database will be available on `localhost:5432` with credentials defined in `docker-compose.yml`.*
+
+### 2. Start the Backend (Django)
+1.  **Activate the Virtual Environment**:
+    ```bash
+    # Windows
+    .\venv\Scripts\activate
+    # macOS/Linux
+    source venv/bin/activate
+    ```
+2.  **Run Migrations**:
+    ```bash
+    cd backend
+    python manage.py migrate
+    ```
+3.  **Start the Server**:
+    ```bash
+    python manage.py runserver 8080
+    ```
+*The API will be available at `http://localhost:8080/api/employees`.*
+
+### 3. Start the Frontend (Angular)
+1.  **Install Dependencies** (First time only):
+    ```bash
+    cd frontend
+    npm install
+    ```
+2.  **Start the Development Server**:
+    ```bash
+    npm start
+    ```
+*The application will be available at `http://localhost:4200`.*
+
+---
+
+## API Endpoints
+- `GET /api/employees`: List all employees.
+- `POST /api/employees`: Create a new employee.
+- `GET /api/employees/<id>`: Retrieve an employee.
+- `PUT /api/employees/<id>`: Update an employee.
+- `DELETE /api/employees/<id>`: Delete an employee.
